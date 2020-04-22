@@ -25,3 +25,13 @@ public class TheatreDao implements TheatreDaoInterface{
 		return t1.getTheatreName();
 	}
 }
+
+/**************************************************************************************************
+      *Method:gettheatreName
+      *description:To fetch the theatre details from database.
+      *theatreId                -fetches the details of that particular id
+      *@returns                 -theatre details
+      *@throws TheatreException -it is raised due to invalid id
+      *created by               -Hemanth Reddy
+      *created date             -21-APR-2020
+**************************************************************************************************/

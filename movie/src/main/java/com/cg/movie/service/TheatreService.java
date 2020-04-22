@@ -20,3 +20,9 @@ public class TheatreService implements TheatreServiceInterface {
 	}
 
 }
+/********************************************************************************************************************
+*       @author           Hemanth reddy
+*       Description       It is a service that provides service for fetching theatre details
+*       version           1.0
+*       created date      21-APR-2020
+********************************************************************************************************************/
