@@ -1,28 +1,13 @@
 package com.cg.movie.service;
 
+import java.util.List;
 
-import javax.transaction.Transactional;
+import com.cg.movie.entity.Theatre;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface TheatreService {
+	public String theatreName(int theatreId);
+	
+	public void create(Theatre theatre);
 
-import com.cg.movie.Dao.TheatreDaoInterface;
-import com.cg.movie.Dao.TheatreDaoInterface;
-@Service
-@Transactional
-public class TheatreService implements TheatreServiceInterface {
-	@Autowired
-	TheatreDaoInterface dao;
-	@Override
-	public String theatreName(int theatreId) {
-		String TheatreName=dao.gettheatreName(theatreId);
-		return TheatreName;
-	}
-
+	public List<Theatre> reterive();
 }
-/********************************************************************************************************************
-*       @author           Hemanth reddy
-*       Description       It is a service that provides service for fetching theatre details
-*       version           1.0
-*       created date      21-APR-2020
-********************************************************************************************************************/
