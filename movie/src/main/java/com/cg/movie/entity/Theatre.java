@@ -22,7 +22,7 @@ public class Theatre {
 	@Column(name="managerName")
 	private String managerName;
 	@Column(name="managerContact")
-	private int managerContact;
+	private String managerContact;
 	
 	public int getTheatreId() {
 		return theatreId;
@@ -48,10 +48,10 @@ public class Theatre {
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}
-	public int getManagerContact() {
+	public String getManagerContact() {
 		return managerContact;
 	}
-	public void setManagerContact(int managerContact) {
+	public void setManagerContact(String managerContact) {
 		this.managerContact = managerContact;
 	}
 	

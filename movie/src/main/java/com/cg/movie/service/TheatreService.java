@@ -5,9 +5,12 @@ import java.util.List;
 import com.cg.movie.entity.Theatre;
 
 public interface TheatreService {
-	public String theatreName(int theatreId);
 	
 	public void create(Theatre theatre);
+	
+	public Theatre findById(int id);
 
-	public List<Theatre> reterive();
+	public void delete(int id);
+	
+	public void update(int id,String name,String city,String managerName,String managerContact);
 }

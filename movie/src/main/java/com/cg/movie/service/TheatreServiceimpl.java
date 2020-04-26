@@ -16,11 +16,6 @@ import com.cg.movie.Dao.TheatreDao;
 public class TheatreServiceimpl implements TheatreService {
 	@Autowired
 	TheatreDao dao;
-	@Override
-	public String theatreName(int theatreId) {
-		String TheatreName=dao.gettheatreName(theatreId);
-		return TheatreName;
-	}
 	/********************************************************************************************************************
 	*       @author           Hemanth reddy
 	*       Description       It is a service that provides service for fetching theatre details
@@ -40,13 +35,26 @@ public class TheatreServiceimpl implements TheatreService {
 		}
 		
 	}
+	
 	@Override
-	public List<Theatre> reterive() {
-		List<Theatre> list=dao.reterive();
-		return list;
+	public Theatre findById(int id) {
+		Theatre th=dao.findById(id);
+		return th;
 	}
+
+	@Override
+	public void delete(int id) {
+		dao.delete(id);
+		
+	}
+
+	@Override
+	public void update(int id,String name,String city,String managerName,String managerContact) {
+		dao.update(id,name,city,managerName,managerContact);
+	}
+}
 	
 	
 
-}
+
 
