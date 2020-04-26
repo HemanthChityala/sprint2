@@ -8,6 +8,8 @@ public interface TheatreService {
 	
 	public void create(Theatre theatre);
 	
+	public List<Theatre> reterive();
+	
 	public Theatre findById(int id);
 
 	public void delete(int id);

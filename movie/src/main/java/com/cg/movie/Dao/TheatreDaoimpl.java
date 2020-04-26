@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.cg.movie.Dao.TheatreDao;
 import com.cg.movie.Exception.TheatreException;
 import com.cg.movie.entity.Theatre;
+
 @Repository
 public class TheatreDaoimpl implements TheatreDao{
 	@PersistenceContext
@@ -36,6 +37,12 @@ public class TheatreDaoimpl implements TheatreDao{
      *created by               -Hemanth Reddy
      *created date             -21-APR-2020
 **************************************************************************************************/
+	@Override
+	public List<Theatre> reterive() {
+		String Qstr="SELECT theatre from Theatre theatre";
+		TypedQuery<Theatre> query=em.createQuery(Qstr,Theatre.class);
+		return query.getResultList();
+	}
 	
 	@Override
 	public Theatre findById(int id) {

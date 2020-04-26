@@ -28,6 +28,12 @@ public class OnlineMovieBookingController {
         service.create(tr);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping("/listalltheatres")
+    public ResponseEntity<List<Theatre>> getTheatrelist() {
+			List<Theatre> list = service.reterive();
+			return new ResponseEntity<List<Theatre>>(list,HttpStatus.OK);
+	}
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Object> deleteTheatre(@PathVariable("id") int id)

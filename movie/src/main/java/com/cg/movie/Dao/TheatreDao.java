@@ -5,9 +5,12 @@ import com.cg.movie.entity.Theatre;
 
 
 
+
 public interface TheatreDao {
 	
 	public boolean create(Theatre theatre);
+	
+	public List<Theatre> reterive();
 
 	public Theatre findById(int id);
 

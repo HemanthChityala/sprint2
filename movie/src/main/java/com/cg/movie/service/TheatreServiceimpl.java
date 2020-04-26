@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.movie.Dao.TheatreDao;
 import com.cg.movie.entity.Theatre;
-import com.cg.movie.Dao.TheatreDao;
+
 @Service
 @Transactional
 public class TheatreServiceimpl implements TheatreService {
@@ -34,6 +34,12 @@ public class TheatreServiceimpl implements TheatreService {
 			System.out.println("Not Added");
 		}
 		
+	}
+	
+	@Override
+	public List<Theatre> reterive() {
+		List<Theatre> list=dao.reterive();
+		return list;
 	}
 	
 	@Override
