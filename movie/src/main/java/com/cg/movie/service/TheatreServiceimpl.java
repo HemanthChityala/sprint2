@@ -18,7 +18,7 @@ public class TheatreServiceimpl implements TheatreService {
 	TheatreDao dao;
 	/********************************************************************************************************************
 	*       @author           Hemanth reddy
-	*       Description       It is a service that provides service for fetching theatre details
+	*       Description       It is a service used for fetching theatre details
 	*       version           1.0
 	*       created date      21-APR-2020
 	********************************************************************************************************************/
