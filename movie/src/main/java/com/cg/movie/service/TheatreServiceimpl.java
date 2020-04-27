@@ -16,12 +16,7 @@ import com.cg.movie.entity.Theatre;
 public class TheatreServiceimpl implements TheatreService {
 	@Autowired
 	TheatreDao dao;
-	/********************************************************************************************************************
-	*       @author           Hemanth reddy
-	*       Description       It is a service used for fetching theatre details
-	*       version           1.0
-	*       created date      21-APR-2020
-	********************************************************************************************************************/
+	
 	@Override
 	public void create(Theatre theatre) {
 		boolean b=dao.create(theatre);
@@ -35,7 +30,12 @@ public class TheatreServiceimpl implements TheatreService {
 		}
 		
 	}
-	
+	/********************************************************************************************************************
+	*       @author           Hemanth reddy
+	*       Description       It is a service used for fetching theatre details
+	*       version           1.0
+	*       created date      21-APR-2020
+	********************************************************************************************************************/
 	@Override
 	public List<Theatre> reterive() {
 		List<Theatre> list=dao.reterive();
