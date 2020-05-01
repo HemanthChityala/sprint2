@@ -34,8 +34,8 @@ public class OnlineMovieBookingController {
      *created date             -21-APR-2020
 **************************************************************************************************/
 	@PostMapping("/theatredetails")
-	public ResponseEntity<Object> savetheatre(@RequestBody Theatre th) {
-        service.create(th);
+	public ResponseEntity<Object> savetheatre(@RequestBody Theatre theatre) {
+        service.create(theatre);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 /**************************************************************************************************
@@ -57,18 +57,19 @@ public class OnlineMovieBookingController {
 	public ResponseEntity<Object> deleteTheatre(@PathVariable("id") int id)
 	{
 		service.delete(id);
-		return new ResponseEntity<>("Deleted",HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 /**************************************************************************************************
-	 *@GetMapping              -Handles HTTP GET requests.
+
+ * @GetMapping              -Handles HTTP GET requests.
      *created by               -Hemanth Reddy
      *created date             -21-APR-2020
 **************************************************************************************************/
 	@GetMapping("/view/{id}")
-	public ResponseEntity<Theatre> viewTheatre(@PathVariable("id") int id)
+	public ResponseEntity<Theatre> viewTheatre(@PathVariable("id") int id) throws TheatreIdNotFoundException
 	{
-		Theatre th=service.findById(id);
-		return new ResponseEntity<Theatre>(th,HttpStatus.OK);
+		Theatre theatre=service.findById(id);
+		return new ResponseEntity<Theatre>(theatre,HttpStatus.OK);
 		
 	}
 /**************************************************************************************************
@@ -77,9 +78,9 @@ public class OnlineMovieBookingController {
      *created date             -21-APR-2020
 **************************************************************************************************/
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Object> updateTheatre(@PathVariable("id") int id,@RequestBody Theatre th)
+	public ResponseEntity<Object> updateTheatre(@PathVariable("id") int id,@RequestBody Theatre theatre)
 	{
-		service.update(id,th.getTheatreName() ,th.getTheatreCity() ,th.getManagerName() ,th.getManagerContact());
+		service.update(id,theatre.getTheatreName() ,theatre.getTheatreCity() ,theatre.getManagerName() ,theatre.getManagerContact());
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

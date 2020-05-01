@@ -4,6 +4,8 @@ package com.cg.movie.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +21,7 @@ public class Theatre{
 	public Theatre() {
 		super();
 	}
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="theatreId")
 	private int theatreId;
 	@Column(name="theatreName",length=25)

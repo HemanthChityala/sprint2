@@ -17,4 +17,6 @@ public interface TheatreDao {
 	public void delete(int id);
 	
 	public void update(int id,String name,String city,String managerName,String managerContact);
+
+	Long getMaxTheatreId(int theatreId);
 }

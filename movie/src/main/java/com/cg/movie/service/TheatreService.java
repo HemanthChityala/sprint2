@@ -2,6 +2,7 @@ package com.cg.movie.service;
 
 import java.util.List;
 
+import com.cg.movie.Exception.TheatreIdNotFoundException;
 import com.cg.movie.entity.Theatre;
 
 public interface TheatreService {
@@ -10,7 +11,7 @@ public interface TheatreService {
 	
 	public List<Theatre> reterive();
 	
-	public Theatre findById(int id);
+	public Theatre findById(int id) throws TheatreIdNotFoundException;
 
 	public void delete(int id);
 	

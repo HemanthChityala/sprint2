@@ -16,7 +16,7 @@ import com.cg.movie.entity.Theatre;
 @Repository
 public class TheatreDaoimpl implements TheatreDao{
 	@PersistenceContext
-	EntityManager em;
+	EntityManager entitymanager;
 	Theatre theatre = new Theatre();
 /**************************************************************************************************
      *Method:                   create
@@ -30,7 +30,10 @@ public class TheatreDaoimpl implements TheatreDao{
 	public boolean create(Theatre theatre) {
 		if(true)
 		{
-			em.persist(theatre);
+			int theatreId=(int) (2000+(getMaxTheatreId(theatre.getTheatreId())+1));
+			theatre.setTheatreId(theatreId);
+			
+			entitymanager.persist(theatre);
 			return true;
 		}
 		return false;
@@ -45,7 +48,7 @@ public class TheatreDaoimpl implements TheatreDao{
 	@Override
 	public List<Theatre> reterive() {
 		String Qstr="SELECT theatre from Theatre theatre";
-		TypedQuery<Theatre> query=em.createQuery(Qstr,Theatre.class);
+		TypedQuery<Theatre> query=entitymanager.createQuery(Qstr,Theatre.class);
 		return query.getResultList();
 	}
 /**************************************************************************************************
@@ -60,11 +63,7 @@ public class TheatreDaoimpl implements TheatreDao{
 	@Override
 	public Theatre findById(int id) {
 		  
-		Theatre th = em.find(Theatre.class, id);
-		if(th==null)
-		{
-			 throw new TheatreIdNotFoundException("Theatre id not found.Please enter a valid id");
-		}
+		Theatre th = entitymanager.find(Theatre.class, id);
 		return th;
 		
 	}
@@ -79,11 +78,11 @@ public class TheatreDaoimpl implements TheatreDao{
 **************************************************************************************************/
 	@Override
 	public void delete(int id) {
-	Theatre th=em.find(Theatre.class, id);//this method will which id to remove
+	Theatre theatre=entitymanager.find(Theatre.class, id);//this method will which id to remove
 	
-	System.out.println(th.getTheatreId() +" "+th.getTheatreName() + " "+th.getTheatreCity()+" "+th.getManagerName()+""+th.getManagerContact()+"is removed");
+	System.out.println(theatre.getTheatreId() +" "+theatre.getTheatreName() + " "+theatre.getTheatreCity()+" "+theatre.getManagerName()+""+theatre.getManagerContact()+"is removed");
 	
-	em.remove(th);//this is object from the database
+	entitymanager.remove(theatre);//this is object from the database
 	
 	}
 	/**************************************************************************************************
@@ -97,11 +96,17 @@ public class TheatreDaoimpl implements TheatreDao{
 **************************************************************************************************/
 	@Override
 	public void update(int id,String name,String city,String managerName,String managerContact) {
-		Theatre th=em.find(Theatre.class, id);
-		th.setTheatreName(name);
-		th.setTheatreCity(city);
-		th.setManagerName(managerName);
-		th.setManagerContact(managerContact);
+		Theatre theatre=entitymanager.find(Theatre.class, id);
+		theatre.setTheatreName(name);
+		theatre.setTheatreCity(city);
+		theatre.setManagerName(managerName);
+		theatre.setManagerContact(managerContact);
 }
+	@Override
+	public Long getMaxTheatreId(int theatreId) {
+		String jpql = "select count(*) from Theatre theatre ";
+		TypedQuery<Long> query = entitymanager.createQuery(jpql, Long.class);
+		return query.getSingleResult();
+	}
 }
 

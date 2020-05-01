@@ -25,8 +25,8 @@ public class TheatreServiceimpl implements TheatreService {
 	********************************************************************************************************************/
 	@Override
 	public void create(Theatre theatre) {
-		boolean b=dao.create(theatre);
-		if(b==true)
+		boolean status=dao.create(theatre);
+		if(status==true)
 		{
 			System.out.println("Added SucessFully");
 		}
@@ -54,7 +54,7 @@ public class TheatreServiceimpl implements TheatreService {
 	*       created date      21-APR-2020
 	********************************************************************************************************************/
 	@Override
-	public Theatre findById(int id) {
+	public Theatre findById(int id) throws TheatreIdNotFoundException {
 		Theatre th=dao.findById(id);
 		if(th==null)
 		{
