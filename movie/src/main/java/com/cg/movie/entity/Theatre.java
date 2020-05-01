@@ -1,29 +1,48 @@
 package com.cg.movie.entity;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+
 
 @Entity
 @Table(name="lpu_movie_theatre")
-public class Theatre {
+public class Theatre{
+	
+
+	public Theatre() {
+		super();
+	}
 	@Id
 	@Column(name="theatreId")
 	private int theatreId;
-	@Column(name="theatreName")
+	@Column(name="theatreName",length=25)
 	private String theatreName;
-	@Column(name="theatre_city")
-	private String city;
-	@Column(name="managerName")
+	@Column(name="theatreCity",length=25)
+	private String theatreCity;
+	@Column(name ="managerName",length=25)
 	private String managerName;
-	@Column(name="managerContact")
+	@Column(name ="managerContact",length=10)
 	private String managerContact;
 	
+	
+//	public Movie getMovie() {
+	//	return movie;
+//	}
+//	public void setMovie(Movie movie) {
+//		this.movie = movie;
+//	}
+	//@ManyToOne
+//	@JoinColumn(name="movieId", referencedColumnName = "movie_Id")
+	//private Movie movie;
+
+
 	public int getTheatreId() {
 		return theatreId;
 	}
@@ -36,11 +55,11 @@ public class Theatre {
 	public void setTheatreName(String theatreName) {
 		this.theatreName = theatreName;
 	}
-	public String getCity() {
-		return city;
+	public String getTheatreCity() {
+		return theatreCity;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setTheatreCity(String theatreCity) {
+		this.theatreCity = theatreCity;
 	}
 	public String getManagerName() {
 		return managerName;
@@ -54,11 +73,10 @@ public class Theatre {
 	public void setManagerContact(String managerContact) {
 		this.managerContact = managerContact;
 	}
-	
-	public Theatre()
-	{
-	}
 
 	
-
+	
+	
+	
+	
 }

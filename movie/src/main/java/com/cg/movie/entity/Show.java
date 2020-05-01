@@ -1,6 +1,8 @@
 package com.cg.movie.entity;
 
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import javax.persistence.Column;
@@ -10,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name="lpu_movie_show")
@@ -25,43 +25,20 @@ public class Show {
 	private int seats;
 	@Column(name="screen_name", length=25)
 	private String screenName;
-	@Column(name="show_starttime")
+	@Column(name="show_start_time")
 	private LocalTime showstartTime;
-	@Column(name="show_endtime")
+	@Column(name="show_end_time")
 	private LocalTime showendTime;
 	
-	@ManyToOne
-	@JoinColumn(name="movie_id")
-	private Movie movie;
+	
+	// @ManyToOne
+	 
+	// @JoinColumn(name="movie_id", referencedColumnName="movie_id") 
+	// private Movie movie;
 	
 	@ManyToOne
 	@JoinColumn(name="theatreId", referencedColumnName = "theatreId")
 	private Theatre theatre;
-
-	
-	public Theatre getTheatre() {
-		return theatre;
-	}
-
-	public void setTheatre(Theatre theatre) {
-		this.theatre = theatre;
-	}
-
-	public LocalTime getShowstartTime() {
-		return showstartTime;
-	}
-
-	public void setShowstartTime(LocalTime showstartTime) {
-		this.showstartTime = showstartTime;
-	}
-
-	public LocalTime getShowendTime() {
-		return showendTime;
-	}
-
-	public void setShowendTime(LocalTime showendTime) {
-		this.showendTime = showendTime;
-	}
 
 	public int getShowId() {
 		return showId;
@@ -95,26 +72,35 @@ public class Show {
 		this.screenName = screenName;
 	}
 
-	public Movie getMovie() {
-		return movie;
+	public LocalTime getShowstartTime() {
+		return showstartTime;
 	}
 
-	public void setMovie(Movie movie) {
-		this.movie = movie;
+	public void setShowstartTime(LocalTime showstartTime) {
+		this.showstartTime = showstartTime;
 	}
 
-	public Show(int showId, String showName, int seats, String screenName, Movie movie, Theatre theatre) {
+	public LocalTime getShowendTime() {
+		return showendTime;
+	}
+
+	public void setShowendTime(LocalTime showendTime) {
+		this.showendTime = showendTime;
+		
+	}
+
+	public Show(int showId, String showName, int seats, String screenName,LocalTime showstartTime,LocalTime showendTime) {
 		super();
 		this.showId = showId;
 		this.showName = showName;
 		this.seats = seats;
 		this.screenName = screenName;
-		this.movie = movie;
-		this.theatre=theatre;
+		this.showstartTime = showstartTime;
+		this.showendTime = showendTime;
+		//this.theater=theater;
 	}
-	
-	
-	
-	
+	public Show() {
+		
+	}
 
 }

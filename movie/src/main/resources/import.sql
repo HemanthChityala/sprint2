@@ -1,8 +1,8 @@
-Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_city,manager_Name,manager_Contact) values(1, 'a','jalandhar','ram',9875642548);
-Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_city,manager_Name,manager_Contact) values(2, 'b','jalandhar','sam',7896541256);
-Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_city,manager_Name,manager_Contact) values(3, 'c','phagwara','shyam',7568945211);
-Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_city,manager_Name,manager_Contact) values(4, 'd','phagwara','singh',8974561258);
-Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_city,manager_Name,manager_Contact) values(5, 'e','amritsar','harpal',6548974586);
+Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_City,manager_Name,manager_Contact) values(1, 'a','jalandhar','ram',9875642548);
+Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_City,manager_Name,manager_Contact) values(2, 'b','jalandhar','sam',7896541256);
+Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_City,manager_Name,manager_Contact) values(3, 'c','phagwara','shyam',7568945211);
+Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_City,manager_Name,manager_Contact) values(4, 'd','phagwara','singh',8974561258);
+Insert into LPU_MOVIE_THEATRE(theatre_Id,theatre_Name,theatre_City,manager_Name,manager_Contact) values(5, 'e','amritsar','harpal',6548974586);
 
 select * from LPU_MOVIE_THEATRE;
 
