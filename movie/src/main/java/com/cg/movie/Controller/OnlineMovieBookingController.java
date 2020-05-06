@@ -1,5 +1,4 @@
 package com.cg.movie.Controller;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.movie.Exception.TheatreIdNotFoundException;
 import com.cg.movie.entity.Theatre;
+
 import com.cg.movie.service.TheatreService;
 @CrossOrigin(origins = "http://localhost:4200")
 /**************************************************************************************************
@@ -28,15 +28,16 @@ import com.cg.movie.service.TheatreService;
 public class OnlineMovieBookingController {
 	@Autowired
 	TheatreService service;
+
 /**************************************************************************************************
 	 *@PostMapping             -Handles the Http post requests.
      *created by               -Hemanth Reddy
      *created date             -21-APR-2020
 **************************************************************************************************/
 	@PostMapping("/theatredetails")
-	public ResponseEntity<Object> savetheatre(@RequestBody Theatre theatre) {
+	public ResponseEntity<String> savetheatre(@RequestBody Theatre theatre) {
         service.create(theatre);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<String>("Theatre added succesfully",HttpStatus.OK);
 	}
 /**************************************************************************************************
 	 *@GetMapping              -Handles HTTP GET requests.
@@ -83,5 +84,7 @@ public class OnlineMovieBookingController {
 		service.update(id,theatre.getTheatreName() ,theatre.getTheatreCity() ,theatre.getManagerName() ,theatre.getManagerContact());
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	
 }
 

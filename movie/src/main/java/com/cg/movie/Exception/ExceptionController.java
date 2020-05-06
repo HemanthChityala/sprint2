@@ -13,4 +13,11 @@ public class ExceptionController {
 	public ResponseEntity<Object> handleException(TheatreIdNotFoundException exception) {
 		return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(value = NoTheatresFoundException.class)
+	public ResponseEntity<Object> handleException(NoTheatresFoundException exception) {
+		return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+	}
 }
+
+

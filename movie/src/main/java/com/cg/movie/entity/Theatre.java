@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -21,7 +22,9 @@ public class Theatre{
 	public Theatre() {
 		super();
 	}
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id 
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "theatreId_generator")
+	//@SequenceGenerator(name="theatreId_generator", sequenceName = "theatreId_seq", allocationSize=2000)
 	@Column(name="theatreId")
 	private int theatreId;
 	@Column(name="theatreName",length=25)
@@ -31,7 +34,7 @@ public class Theatre{
 	@Column(name ="managerName",length=25)
 	private String managerName;
 	@Column(name ="managerContact",length=10)
-	private String managerContact;
+	private Long managerContact;
 	
 	
 //	public Movie getMovie() {
@@ -69,10 +72,10 @@ public class Theatre{
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}
-	public String getManagerContact() {
+	public Long getManagerContact() {
 		return managerContact;
 	}
-	public void setManagerContact(String managerContact) {
+	public void setManagerContact(Long managerContact) {
 		this.managerContact = managerContact;
 	}
 

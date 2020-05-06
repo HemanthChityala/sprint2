@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.movie.Dao.TheatreDao;
+import com.cg.movie.Exception.NoTheatresFoundException;
 import com.cg.movie.Exception.TheatreIdNotFoundException;
 import com.cg.movie.entity.Theatre;
 
@@ -25,16 +26,7 @@ public class TheatreServiceimpl implements TheatreService {
 	********************************************************************************************************************/
 	@Override
 	public void create(Theatre theatre) {
-		boolean status=dao.create(theatre);
-		if(status==true)
-		{
-			System.out.println("Added SucessFully");
-		}
-		else
-		{
-			System.out.println("Not Added");
-		}
-		
+	 dao.create(theatre);	
 	}
 	/********************************************************************************************************************
 	*       @author           Hemanth reddy
@@ -44,8 +36,12 @@ public class TheatreServiceimpl implements TheatreService {
 	********************************************************************************************************************/
 	@Override
 	public List<Theatre> reterive() {
-		List<Theatre> list=dao.reterive();
-		return list;
+		if(dao.reterive().size()>0) {
+			List<Theatre> list=dao.reterive();
+			return list;
+			}
+			throw new NoTheatresFoundException("No Theatres Available");
+
 	}
 	/********************************************************************************************************************
 	*       @author           Hemanth reddy
@@ -54,7 +50,7 @@ public class TheatreServiceimpl implements TheatreService {
 	*       created date      21-APR-2020
 	********************************************************************************************************************/
 	@Override
-	public Theatre findById(int id) throws TheatreIdNotFoundException {
+	public Theatre findById(int id)  {
 		Theatre th=dao.findById(id);
 		if(th==null)
 		{
@@ -80,7 +76,7 @@ public class TheatreServiceimpl implements TheatreService {
 	*       created date      21-APR-2020
 	********************************************************************************************************************/
 	@Override
-	public void update(int id,String name,String city,String managerName,String managerContact) {
+	public void update(int id,String name,String city,String managerName,Long managerContact) {
 		dao.update(id,name,city,managerName,managerContact);
 	}
 }

@@ -27,7 +27,7 @@ public class Admin {
 	private String adminContact;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
-	private user u = new user();
+	private User u = new User();
 	
 	
 

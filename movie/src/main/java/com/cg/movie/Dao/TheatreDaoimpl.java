@@ -17,6 +17,7 @@ import com.cg.movie.entity.Theatre;
 public class TheatreDaoimpl implements TheatreDao{
 	@PersistenceContext
 	EntityManager entitymanager;
+	static int id= 2000;
 	Theatre theatre = new Theatre();
 /**************************************************************************************************
      *Method:                   create
@@ -27,20 +28,20 @@ public class TheatreDaoimpl implements TheatreDao{
      *created date             -21-APR-2020
 **************************************************************************************************/
 	@Override
-	public boolean create(Theatre theatre) {
+	public boolean create(Theatre theatre) { 
 		if(true)
 		{
-			int theatreId=(int) (2000+(getMaxTheatreId(theatre.getTheatreId())+1));
+			int theatreId =getMaxTheatreId(theatre.getTheatreId())+1;
 			theatre.setTheatreId(theatreId);
-			
-			entitymanager.persist(theatre);
-			return true;
+			entitymanager.persist(theatre); 
+			return true; 	
 		}
 		return false;
 	}
 /**************************************************************************************************
      *Method:                   reterive
      *description:              displays all the records
+     *
      *@returns                 -theatre details
      *created by               -Hemanth Reddy
      *created date             -21-APR-2020
@@ -95,7 +96,7 @@ public class TheatreDaoimpl implements TheatreDao{
      *created date             -21-APR-2020
 **************************************************************************************************/
 	@Override
-	public void update(int id,String name,String city,String managerName,String managerContact) {
+	public void update(int id,String name,String city,String managerName,Long managerContact) {
 		Theatre theatre=entitymanager.find(Theatre.class, id);
 		theatre.setTheatreName(name);
 		theatre.setTheatreCity(city);
@@ -103,10 +104,20 @@ public class TheatreDaoimpl implements TheatreDao{
 		theatre.setManagerContact(managerContact);
 }
 	@Override
-	public Long getMaxTheatreId(int theatreId) {
-		String jpql = "select count(*) from Theatre theatre ";
-		TypedQuery<Long> query = entitymanager.createQuery(jpql, Long.class);
-		return query.getSingleResult();
+	public int getMaxTheatreId(int theatreId) {
+		String jpql = "select theatre from Theatre theatre ";
+		TypedQuery<Theatre> query = entitymanager.createQuery(jpql, Theatre.class);
+	    List<Theatre> theatreList= query.getResultList();
+	    if(!theatreList.isEmpty())
+	    {
+	    	String str = "SELECT max(theatreId) from Theatre";
+	    	TypedQuery<Integer> theatreid = entitymanager.createQuery(str,Integer.class);
+	    	int num = theatreid.getSingleResult();
+	    	return num;
+	    	
+	    }
+	    else
+	    	return id;
 	}
 }
 
