@@ -34,7 +34,7 @@ public class OnlineMovieBookingController {
      *created by               -Hemanth Reddy
      *created date             -21-APR-2020
 **************************************************************************************************/
-	@PostMapping("/theatredetails")
+	@PostMapping("/addtheatredetails")
 	public ResponseEntity<String> savetheatre(@RequestBody Theatre theatre) {
         service.create(theatre);
 		return new ResponseEntity<String>("Theatre added succesfully",HttpStatus.OK);
@@ -54,7 +54,7 @@ public class OnlineMovieBookingController {
      *created by               -Hemanth Reddy
      *created date             -21-APR-2020
 **************************************************************************************************/
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deletetheatre/{id}")
 	public ResponseEntity<Object> deleteTheatre(@PathVariable("id") int id)
 	{
 		service.delete(id);
@@ -62,11 +62,11 @@ public class OnlineMovieBookingController {
 	}
 /**************************************************************************************************
 
- * @GetMapping              -Handles HTTP GET requests.
+     * @GetMapping             -Handles HTTP GET requests.
      *created by               -Hemanth Reddy
      *created date             -21-APR-2020
 **************************************************************************************************/
-	@GetMapping("/view/{id}")
+	@GetMapping("/viewtheatres/{id}")
 	public ResponseEntity<Theatre> viewTheatre(@PathVariable("id") int id) throws TheatreIdNotFoundException
 	{
 		Theatre theatre=service.findById(id);
@@ -78,7 +78,7 @@ public class OnlineMovieBookingController {
      *created by               -Hemanth Reddy
      *created date             -21-APR-2020
 **************************************************************************************************/
-	@PutMapping("/update/{id}")
+	@PutMapping("/updatetheatre/{id}")
 	public ResponseEntity<Object> updateTheatre(@PathVariable("id") int id,@RequestBody Theatre theatre)
 	{
 		service.update(id,theatre.getTheatreName() ,theatre.getTheatreCity() ,theatre.getManagerName() ,theatre.getManagerContact());
