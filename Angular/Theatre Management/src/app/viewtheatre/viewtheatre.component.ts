@@ -77,12 +77,11 @@ export class ViewtheatreComponent implements OnInit {
   /*********************************************************************
    * Method: updateTheatre
    * params: theatreId
-   * Description: this method is updating the theatre after deleting a row
+   * Description: this method is updating the theatre.
    *
    * Created Date: 28 Apr 2020
    * Author: Hemanth Reddy
    ************************************************************************/
-  //updateTheatre(theatre.theatreId)
   updateTheatre(theatreId: number) {
     let tmptheatres: Theatre[] = this.theatreService
       .getTheatres()
